@@ -7,7 +7,7 @@ class TeacherSerializer(serializers.ModelSerializer):
         fields=['id','name','expertise']
 
 class CourseSerializer(serializers.ModelSerializer):
-    # Teacher bilgisini de içine gömelim (Nested Serializer)
+    # Teacher bilgisini de içine göm (Nested Serializer)
     teacher=TeacherSerializer(read_only=True)
     teacher_id= serializers.PrimaryKeyRelatedField(queryset=Teacher.objects.all(), source='teacher', write_only=True)
     class Meta:
